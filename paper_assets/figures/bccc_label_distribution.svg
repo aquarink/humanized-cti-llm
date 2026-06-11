@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="450.0" y="34" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700">bccc Label Distribution</text>
+<text x="158" y="88" text-anchor="end" font-family="Arial" font-size="13">Benign</text>
+<rect x="170" y="70" width="660" height="24" fill="#276FBF"/>
+<text x="838" y="88" font-family="Arial" font-size="13">413199</text>
+<text x="158" y="124" text-anchor="end" font-family="Arial" font-size="13">Attack</text>
+<rect x="170" y="106" width="364" height="24" fill="#D64550"/>
+<text x="542" y="124" font-family="Arial" font-size="13">228469</text>
+<text x="158" y="160" text-anchor="end" font-family="Arial" font-size="13">Suspicious</text>
+<rect x="170" y="142" width="94" height="24" fill="#2E8B57"/>
+<text x="272" y="160" font-family="Arial" font-size="13">59104</text>
+</svg>

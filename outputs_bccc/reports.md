@@ -18,6 +18,10 @@ The observed traffic pattern may affect service availability by saturating the t
 - Check whether the source and target relationship is expected; escalate repeated high-rate sources for blocking or scrubbing policy review.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF label indicates DDoS/attack/suspicious AND repeated flows occur in a bounded window THEN map to Impact/T1498.
+- Very high flows_per_second strengthens the availability-risk explanation.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -41,6 +45,9 @@ The observed traffic pattern may affect service availability by saturating the t
 - Review upstream firewall, rate-limit, CDN, or DDoS protection telemetry for matching spikes.
 - Check whether the source and target relationship is expected; escalate repeated high-rate sources for blocking or scrubbing policy review.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF label indicates DDoS/attack/suspicious AND repeated flows occur in a bounded window THEN map to Impact/T1498.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
@@ -66,6 +73,9 @@ The observed traffic pattern may affect service availability by saturating the t
 - Check whether the source and target relationship is expected; escalate repeated high-rate sources for blocking or scrubbing policy review.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF label indicates DDoS/attack/suspicious AND repeated flows occur in a bounded window THEN map to Impact/T1498.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -90,6 +100,9 @@ The observed traffic pattern may affect service availability by saturating the t
 - Check whether the source and target relationship is expected; escalate repeated high-rate sources for blocking or scrubbing policy review.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF label indicates DDoS/attack/suspicious AND repeated flows occur in a bounded window THEN map to Impact/T1498.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -113,6 +126,9 @@ The observed traffic pattern may affect service availability by saturating the t
 - Review upstream firewall, rate-limit, CDN, or DDoS protection telemetry for matching spikes.
 - Check whether the source and target relationship is expected; escalate repeated high-rate sources for blocking or scrubbing policy review.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF label indicates DDoS/attack/suspicious AND repeated flows occur in a bounded window THEN map to Impact/T1498.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.

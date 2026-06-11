@@ -12,6 +12,7 @@ from cti_pipeline.evaluation import write_evaluation_rubric
 from cti_pipeline.loaders import iter_supported_datasets, load_dataset
 from cti_pipeline.reporting import render_openai_report, render_reports
 from cti_pipeline.threat_mapping import enrich_incidents
+from cti_pipeline.xai import add_explanations
 
 
 def parse_args():
@@ -46,6 +47,7 @@ def main():
         max_incidents=args.max_incidents,
     )
     incidents = enrich_incidents(incidents)
+    incidents = add_explanations(incidents)
 
     incidents_path = output_dir / "incidents.jsonl"
     with incidents_path.open("w", encoding="utf-8") as handle:

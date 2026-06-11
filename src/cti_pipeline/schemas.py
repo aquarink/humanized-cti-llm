@@ -19,7 +19,7 @@ class Incident:
     metrics: Dict[str, Any]
     descriptors: List[str]
     threat_context: Dict[str, Any] = field(default_factory=dict)
+    explanations: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
-

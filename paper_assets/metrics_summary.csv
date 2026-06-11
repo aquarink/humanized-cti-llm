@@ -1,0 +1,11 @@
+dataset,task,accuracy,label,precision,recall,f1,support,note
+uwf24,security_relevance_filtering,1.0,False,1.0,1.0,1.0,47906,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."
+uwf24,security_relevance_filtering,1.0,True,1.0,1.0,1.0,43843,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."
+uwf24,mitre_technique_mapping,1.0,T1048,1.0,1.0,1.0,23,Measures preservation of dataset ATT&CK technique labels through the mapping component.
+uwf24,mitre_technique_mapping,1.0,T1078,1.0,1.0,1.0,326,Measures preservation of dataset ATT&CK technique labels through the mapping component.
+uwf24,mitre_technique_mapping,1.0,T1110,1.0,1.0,1.0,43494,Measures preservation of dataset ATT&CK technique labels through the mapping component.
+uwf24,mitre_technique_mapping,1.0,none,1.0,1.0,1.0,47906,Measures preservation of dataset ATT&CK technique labels through the mapping component.
+sdn-syn,security_relevance_filtering,1.0,False,1.0,1.0,1.0,2679,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."
+sdn-syn,security_relevance_filtering,1.0,True,1.0,1.0,1.0,3554,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."
+bccc,security_relevance_filtering,1.0,False,1.0,1.0,1.0,413199,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."
+bccc,security_relevance_filtering,1.0,True,1.0,1.0,1.0,287573,"Rule baseline for intermediate pipeline validation, not final CTI narrative quality."

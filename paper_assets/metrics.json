@@ -1,0 +1,178 @@
+[
+  {
+    "accuracy": 1.0,
+    "confusion_matrix": [
+      [
+        47906,
+        0
+      ],
+      [
+        0,
+        43843
+      ]
+    ],
+    "dataset": "uwf24",
+    "labels": [
+      false,
+      true
+    ],
+    "note": "Rule baseline for intermediate pipeline validation, not final CTI narrative quality.",
+    "per_label": [
+      {
+        "f1": 1.0,
+        "label": false,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 47906
+      },
+      {
+        "f1": 1.0,
+        "label": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 43843
+      }
+    ],
+    "task": "security_relevance_filtering"
+  },
+  {
+    "accuracy": 1.0,
+    "confusion_matrix": [
+      [
+        23,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        326,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        43494,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        47906
+      ]
+    ],
+    "dataset": "uwf24",
+    "labels": [
+      "T1048",
+      "T1078",
+      "T1110",
+      "none"
+    ],
+    "note": "Measures preservation of dataset ATT&CK technique labels through the mapping component.",
+    "per_label": [
+      {
+        "f1": 1.0,
+        "label": "T1048",
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 23
+      },
+      {
+        "f1": 1.0,
+        "label": "T1078",
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 326
+      },
+      {
+        "f1": 1.0,
+        "label": "T1110",
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 43494
+      },
+      {
+        "f1": 1.0,
+        "label": "none",
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 47906
+      }
+    ],
+    "task": "mitre_technique_mapping"
+  },
+  {
+    "accuracy": 1.0,
+    "confusion_matrix": [
+      [
+        2679,
+        0
+      ],
+      [
+        0,
+        3554
+      ]
+    ],
+    "dataset": "sdn-syn",
+    "labels": [
+      false,
+      true
+    ],
+    "note": "Rule baseline for intermediate pipeline validation, not final CTI narrative quality.",
+    "per_label": [
+      {
+        "f1": 1.0,
+        "label": false,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 2679
+      },
+      {
+        "f1": 1.0,
+        "label": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 3554
+      }
+    ],
+    "task": "security_relevance_filtering"
+  },
+  {
+    "accuracy": 1.0,
+    "confusion_matrix": [
+      [
+        413199,
+        0
+      ],
+      [
+        0,
+        287573
+      ]
+    ],
+    "dataset": "bccc",
+    "labels": [
+      false,
+      true
+    ],
+    "note": "Rule baseline for intermediate pipeline validation, not final CTI narrative quality.",
+    "per_label": [
+      {
+        "f1": 1.0,
+        "label": false,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 413199
+      },
+      {
+        "f1": 1.0,
+        "label": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 287573
+      }
+    ],
+    "task": "security_relevance_filtering"
+  }
+]

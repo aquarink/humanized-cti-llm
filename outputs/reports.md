@@ -18,6 +18,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -41,6 +45,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Validate whether the exposed service and port are expected for the destination assets.
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
@@ -66,6 +74,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -89,6 +101,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Validate whether the exposed service and port are expected for the destination assets.
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
@@ -114,6 +130,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -137,6 +157,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Validate whether the exposed service and port are expected for the destination assets.
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
@@ -162,6 +186,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
 
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
+
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.
 
@@ -185,6 +213,10 @@ The mapped behavior may indicate repeated authentication attempts or credential 
 - Validate whether the exposed service and port are expected for the destination assets.
 - Review MFA, password policy, and source reputation before deciding containment.
 - Treat CVE context as enrichment only unless confirmed by vulnerability scanning or exploit evidence.
+
+### Explainability Notes
+- IF UWF24 label_tactic is Credential Access AND label_technique is T1110 THEN map to Brute Force.
+- High byte_asymmetry_ratio supports the observed asymmetric traffic description.
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.

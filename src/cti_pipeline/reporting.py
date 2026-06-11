@@ -95,6 +95,8 @@ def render_template_report(incident: Incident) -> str:
     sources = ", ".join(incident.source_ips[:3]) or "unknown"
     destinations = ", ".join(incident.destination_ips[:3]) or "unknown"
     descriptors = ", ".join(incident.descriptors) or "no qualitative descriptor"
+    rules = incident.explanations.get("rules", [])
+    rule_text = "\n".join(f"- {rule}" for rule in rules) if rules else "- No explanation rules available."
 
     return f"""## Incident {incident.incident_id}
 
@@ -112,6 +114,9 @@ The behavior is mapped to MITRE ATT&CK tactic `{ctx.get('tactic', 'none')}` and 
 
 ### Recommended Analyst Actions
 {_recommended_actions(ctx)}
+
+### Explainability Notes
+{rule_text}
 
 ### Evidence Limitations
 This report is generated from incident-level network telemetry abstraction. It does not prove attacker identity, malware use, successful exploitation, or confirmed business impact.

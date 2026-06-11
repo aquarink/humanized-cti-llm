@@ -1,0 +1,4 @@
+dataset,raw_rows_loaded,incident_count,mapping_coverage,top_labels_json
+uwf24,91749,12,1.0,"{""Credential Access"": 43494, ""Defense Evasion"": 326, ""Exfiltration"": 23, ""none"": 47906}"
+sdn-syn,6233,1,1.0,"{""DDOS"": 3554, ""Normal"": 2679}"
+bccc,700772,12,1.0,"{""Attack"": 228469, ""Benign"": 413199, ""Suspicious"": 59104}"

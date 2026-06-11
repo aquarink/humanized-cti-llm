@@ -4,13 +4,3 @@ b9c7394ccb81,actionability,1-5,Does the report give useful response or triage ac
 b9c7394ccb81,analyst_alignment,1-5,How closely does the generated report align with an analyst-authored report for the same incident?
 b9c7394ccb81,unsupported_claims,0-5,Count or score claims not supported by the incident abstraction. Lower is better.
 b9c7394ccb81,notes,free text,"Reviewer notes, disagreements, or evidence gaps."
-bedc3655af5d,clarity,1-5,"Does the report clearly explain what happened, where, and during which time window?"
-bedc3655af5d,actionability,1-5,Does the report give useful response or triage actions without overclaiming?
-bedc3655af5d,analyst_alignment,1-5,How closely does the generated report align with an analyst-authored report for the same incident?
-bedc3655af5d,unsupported_claims,0-5,Count or score claims not supported by the incident abstraction. Lower is better.
-bedc3655af5d,notes,free text,"Reviewer notes, disagreements, or evidence gaps."
-6957bf7a2956,clarity,1-5,"Does the report clearly explain what happened, where, and during which time window?"
-6957bf7a2956,actionability,1-5,Does the report give useful response or triage actions without overclaiming?
-6957bf7a2956,analyst_alignment,1-5,How closely does the generated report align with an analyst-authored report for the same incident?
-6957bf7a2956,unsupported_claims,0-5,Count or score claims not supported by the incident abstraction. Lower is better.
-6957bf7a2956,notes,free text,"Reviewer notes, disagreements, or evidence gaps."
