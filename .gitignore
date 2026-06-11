@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+env/
+
+# Local research inputs are intentionally kept outside git.
+datasets/
+*.pdf
+
+# Local secrets and API keys.
+.env
+.env.*
