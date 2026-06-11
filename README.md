@@ -51,3 +51,27 @@ python3 scripts/generate_cti_reports.py --dataset uwf24 --use-llm --model gpt-4.
 ```
 
 Input ke LLM hanya berupa JSON abstraksi insiden, bukan raw telemetry.
+
+## DistilBERT Baseline
+
+DistilBERT digunakan sebagai baseline kuantitatif untuk intermediate incident classification, bukan untuk menghasilkan laporan CTI.
+
+```bash
+python3 scripts/run_distilbert_baseline.py \
+  --task uwf24_tactic \
+  --uwf24-root datasets/UWF-ZeekData24-csv \
+  --output-dir distilbert_outputs \
+  --epochs 2
+```
+
+Untuk environment cloud:
+
+```bash
+python3 scripts/run_distilbert_baseline.py \
+  --task uwf24_tactic \
+  --uwf24-root ~/cti_project/dataset/UWF-ZeekData24-csv \
+  --dataset-root ~/datasets \
+  --output-dir ~/cti_project/distilbert_outputs
+```
+
+Default DistilBERT baseline menghindari label leakage, membuang abstraksi teks ambigu, dan memakai class weighting. Gunakan macro-F1 dan per-class F1 sebagai interpretasi utama untuk task yang imbalance.
