@@ -119,6 +119,9 @@ MIN_SAMPLES_PER_CLASS = 2
 BATCH_SIZE = 16
 EPOCHS = 2
 LEARNING_RATE = 2e-5
+INCLUDE_LABEL_HINTS = False  # keep False for defensible classification without label leakage
+DROP_AMBIGUOUS_TEXTS = True  # remove identical abstractions that map to multiple labels
+USE_CLASS_WEIGHTS = True
 
 print("DATASET_ROOT:", DATASET_ROOT)
 print("UWF24_DIR:", UWF24_DIR)
@@ -235,9 +238,10 @@ def build_uwf24_incident_texts(df, task="uwf24_tactic", window_minutes=15):
             f"Destination ports: {', '.join(top_values(group['dest_port']))}. "
             f"Unique sources: {group['src_ip'].nunique()}. Unique destinations: {group['dest_ip'].nunique()}. "
             f"Originator bytes: {orig_bytes:.0f}. Responder bytes: {resp_bytes:.0f}. "
-            f"Byte asymmetry ratio: {byte_asymmetry_ratio:.4f}. "
-            f"MITRE technique label in abstraction: {technique}."
+            f"Byte asymmetry ratio: {byte_asymmetry_ratio:.4f}."
         )
+        if INCLUDE_LABEL_HINTS:
+            text += f" MITRE technique label in abstraction: {technique}."
         rows.append({
             "text": text,
             "label": label,
@@ -302,6 +306,31 @@ display(dataset_df.head())
 display(dataset_df["label"].value_counts())
 """
     ),
+    md(
+        r"""
+## 5.1. Ambiguous Abstraction Check
+
+Some UWF-ZeekData24 rows may be duplicated across tactics or may contain the same observable abstraction with different labels. If the same text maps to multiple labels, a text classifier cannot reliably learn a unique class from telemetry evidence alone.
+
+For the main DistilBERT baseline, `DROP_AMBIGUOUS_TEXTS=True` removes identical text abstractions that have conflicting labels.
+"""
+    ),
+    code(
+        r"""
+ambiguous_texts = (
+    dataset_df.groupby("text")["label"]
+    .nunique()
+    .reset_index(name="label_count")
+    .query("label_count > 1")
+)
+
+print("Ambiguous text abstractions:", len(ambiguous_texts))
+if len(ambiguous_texts):
+    ambiguous_examples = dataset_df[dataset_df["text"].isin(ambiguous_texts["text"])].sort_values("text")
+    display(ambiguous_examples[["label", "tactic", "technique", "flow_count", "text"]].head(20))
+    ambiguous_examples.to_csv(TABLE_DIR / f"{TASK}_ambiguous_abstractions.csv", index=False)
+"""
+    ),
     code(
         r"""
 plt.figure(figsize=(10, 5))
@@ -335,6 +364,12 @@ def cap_per_class(df, label_col="label", max_per_class=None):
 counts = dataset_df["label"].value_counts()
 valid_labels = counts[counts >= MIN_SAMPLES_PER_CLASS].index
 filtered_df = dataset_df[dataset_df["label"].isin(valid_labels)].copy()
+if DROP_AMBIGUOUS_TEXTS:
+    label_counts_by_text = filtered_df.groupby("text")["label"].transform("nunique")
+    before = len(filtered_df)
+    filtered_df = filtered_df[label_counts_by_text == 1].copy()
+    print(f"Dropped ambiguous text abstractions: {before - len(filtered_df)}")
+
 balanced_df = cap_per_class(filtered_df, max_per_class=MAX_INCIDENTS_PER_CLASS)
 
 label_names = sorted(balanced_df["label"].unique())
@@ -344,6 +379,7 @@ balanced_df["label_id"] = balanced_df["label"].map(label2id)
 
 print("Labels:", label_names)
 display(balanced_df["label"].value_counts())
+balanced_df.to_csv(TABLE_DIR / f"{TASK}_distilbert_training_abstractions.csv", index=False)
 
 stratify = balanced_df["label_id"] if balanced_df["label_id"].value_counts().min() >= 2 else None
 train_df, test_df = train_test_split(
@@ -411,6 +447,14 @@ model = AutoModelForSequenceClassification.from_pretrained(
 )
 model.to(device)
 
+if USE_CLASS_WEIGHTS:
+    class_counts = train_df["label_id"].value_counts().sort_index()
+    weights = len(train_df) / (len(label_names) * class_counts)
+    class_weights = torch.tensor(weights.values, dtype=torch.float).to(device)
+    print("Class weights:", {label_names[i]: round(float(w), 4) for i, w in enumerate(class_weights.detach().cpu())})
+else:
+    class_weights = None
+
 optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 
 for epoch in range(EPOCHS):
@@ -422,8 +466,11 @@ for epoch in range(EPOCHS):
         labels = labels.to(device)
 
         optimizer.zero_grad()
-        outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-        loss = outputs.loss
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+        if class_weights is None:
+            loss = torch.nn.functional.cross_entropy(outputs.logits, labels)
+        else:
+            loss = torch.nn.functional.cross_entropy(outputs.logits, labels, weight=class_weights)
         loss.backward()
         optimizer.step()
         total_loss += loss.item()
@@ -462,6 +509,7 @@ y_true, y_pred, y_prob = predict(model, test_loader)
 accuracy = accuracy_score(y_true, y_pred)
 print("Accuracy:", round(accuracy, 4))
 print(classification_report(y_true, y_pred, target_names=label_names, zero_division=0))
+print("Macro-F1 should be prioritized over accuracy for imbalanced classes.")
 
 precision, recall, f1, support = precision_recall_fscore_support(
     y_true, y_pred, labels=list(range(len(label_names))), zero_division=0
@@ -592,6 +640,9 @@ manifest = {
     "epochs": EPOCHS,
     "batch_size": BATCH_SIZE,
     "learning_rate": LEARNING_RATE,
+    "include_label_hints": INCLUDE_LABEL_HINTS,
+    "drop_ambiguous_texts": DROP_AMBIGUOUS_TEXTS,
+    "use_class_weights": USE_CLASS_WEIGHTS,
     "labels": label_names,
     "train_size": int(len(train_df)),
     "test_size": int(len(test_df)),
